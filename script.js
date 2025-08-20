@@ -67,7 +67,7 @@ function resetToDefaultBackground() {
   const body = document.body;
   body.style.backgroundImage = "none";
   body.style.background = "linear-gradient(to right, rgb(125, 81, 112), rgb(70, 14, 71))";
-  console.log("✅ Reset to default background");
+  console.log("Reset to default background");
 }
 
 window.onload = () => {
