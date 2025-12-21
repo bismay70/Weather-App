@@ -55,7 +55,7 @@ Suggestions for improvement:
 1. Clone the repo:
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/bismay70/Weather-App.git
 cd "wreather app"
 ```
 
