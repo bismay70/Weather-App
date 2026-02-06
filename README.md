@@ -16,9 +16,7 @@ This project demonstrates a clean UI for displaying:
 
 ## 📸 Screenshots
 
-![App Screenshot Placeholder](./screenshot.png)
-
-_Replace `screenshot.png` with an actual screenshot (recommended 1280×720). You can create an `images/` or `assets/` folder and place the screenshot there. To add multiple images, use `./images/screenshot-1.png`, etc._
+<img src=./weather.png width="1000px"/>
 
 ---
 
@@ -57,7 +55,7 @@ Suggestions for improvement:
 1. Clone the repo:
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/bismay70/Weather-App.git
 cd "wreather app"
 ```
 
@@ -126,4 +124,3 @@ Please open a PR and describe the change.
 
 ---
 
-If you want, I can also draft a short `CONTRIBUTING.md`, add a license file, or improve the docs with screenshots and GIFs. 💡
