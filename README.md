@@ -56,7 +56,7 @@ Suggestions for improvement:
 
 ```bash
 git clone https://github.com/bismay70/Weather-App.git
-cd "wreather app"
+cd "weather app"
 ```
 
 2. Open locally (any of the following):
@@ -88,7 +88,7 @@ Security note: Avoid committing secret API keys to public repositories. For prod
 ## 📁 Project Structure
 
 ```
-wreather app/
+weather app/
 ├─ index.html        # main entry
 ├─ style.css         # styling & responsive rules
 ├─ script.js         # main JS (fetch + UI update + backgrounds)
@@ -117,10 +117,4 @@ Please open a PR and describe the change.
 
 ---
 
-## 📝 License & Credits
-
-- Built by Bismay Samal
-- This project is provided as-is. Add an open-source license (e.g., MIT) if you want to allow reuse.
-
----
 

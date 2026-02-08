@@ -1,85 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>मौसम - Weather App</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Shadows+Into+Light+Two&family=Shantell+Sans:ital,wght@0,300..800;1,300..800&family=Space+Grotesk:wght@300..700&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Shadows+Into+Light+Two&family=Shantell+Sans:ital,wght@0,300..800;1,300..800&family=Space+Grotesk:wght@300..700&family=Tangerine:wght@400;700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-  <header>
-    <nav class="navbar">
-      <div class="nav-logo">
-        <span>मौसम</span>
-        <span style="color: #fff;">•</span>
-        <span style="color: #d71010;">Weather App</span>
-      </div>
-    </nav>
-  </header>
-  
-  <div class="container">
-    <div class="search">
-      <input type="text" id="cityInput" placeholder="Enter city name..." />
-      <button onclick="fetchWeather()"> Get Weather Data</button>
-    </div>
+  <div class="background-overlay"></div>
 
-    <div class="loading" id="loading"> Loading weather data...</div>
-    
-    <div id="weatherDisplay">
-      <div class="main-grid">
-        <!-- Left Panel: Current Weather -->
-        <div class="left-panel">
-          <h2 class="section-title">Current Weather</h2>
-          
-          <div class="location" id="locationInfo"></div>
-          <img id="weatherIcon" class="weather-icon" src="" alt="Weather icon"/>
-          <div class="temperature" id="temp"></div>
-          
-          <div class="details">
-            <div>
-              <span style="font-size: 2rem;">☁️</span>
-              <span id="condition" style="margin-top: 8px;">Condition</span>
-            </div>
-            <div>
-              <span style="font-size: 2rem;">💧</span>
-              <span id="humidity" style="margin-top: 8px;">Humidity</span>
-            </div>
-            <div>
-              <span style="font-size: 2rem;">💨</span>
-              <span id="windSpeed" style="margin-top: 8px;">Wind</span>
-            </div>
+  <div class="app-container">
+
+    <div class="main-layout">
+      <!-- Left Panel -->
+      <div class="left-panel">
+        <h1 class="app-title">मौसम <span class="subtitle">by Bismay</span></h1>
+
+        <!-- Search Bar -->
+        <div class="search-container">
+          <div class="search-box">
+            <input type="text" id="cityInput" placeholder="Search city..." autocomplete="off" />
+            <button onclick="fetchWeather()" id="searchBtn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </button>
           </div>
-
-          <div class="stats-grid">
-            <div class="stat-card">
-              <div class="stat-label">Pressure</div>
-              <div class="stat-value" id="pressure">-- hPa</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-label">Visibility</div>
-              <div class="stat-value" id="visibility">-- km</div>
-            </div>
+          <div id="historySection" class="history-pills" style="display: none;">
+            <!-- Pills will be injected here -->
           </div>
         </div>
 
-        <!-- Right Panel: 5-Day Forecast -->
-        <div class="right-panel">
-          <h2 class="section-title">5-Day Weather Forecast</h2>
-          <div class="forecast-grid" id="forecastGrid"></div>
+        <!-- Top Info: Location & Time -->
+        <div class="header-info">
+          <h2 id="locationName" class="city-name">--</h2>
+          <div id="currentClock" class="live-clock">--:--</div>
+          <div id="currentDate" class="live-date">--</div>
+        </div>
+
+        <!-- Forecast Strip (Bottom of Left Panel) -->
+        <div class="forecast-section">
+          <div class="forecast-strip" id="forecastGrid">
+            <!-- Items will be injected here -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Panel -->
+      <div class="right-panel">
+        <div class="loading" id="loading">Updating weather...</div>
+
+        <div id="weatherDisplay" class="weather-dashboard">
+          <!-- Main Glass Card -->
+          <div class="glass-card main-card">
+            <div class="main-weather-content">
+              <div class="temp-container">
+                <span id="temp" class="big-temp">--°</span>
+                <div class="condition-wrapper">
+                  <img id="weatherIcon" class="weather-icon-lg" src="" alt="" />
+                  <span id="condition" class="condition-text">--</span>
+                </div>
+              </div>
+
+              <div class="feels-like">
+                Feels Like <span id="feelsLike">--°</span>
+                <span class="range">Max <span id="maxTemp">--°</span> Min <span id="minTemp">--°</span></span>
+              </div>
+            </div>
+
+            <!-- Weather Stats Grid -->
+            <div class="stats-grid">
+              <div class="stat-item">
+                <span class="stat-icon">☔</span>
+                <span class="stat-label">Humidity</span>
+                <span class="stat-val" id="humidity">--%</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-icon">🧭</span>
+                <span class="stat-label">Pressure</span>
+                <span class="stat-val" id="pressure">--</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-icon">💨</span>
+                <span class="stat-label">Wind</span>
+                <span class="stat-val" id="windSpeed">--</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-icon">👁️</span>
+                <span class="stat-label">Visibility</span>
+                <span class="stat-val" id="visibility">--</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <footer>
-    <div class="foot-panel">
-      made with ❤️ by Bismay Samal
-    </div>
-  </footer>
-
   <script src="script.js"></script>
 </body>
+
 </html>
