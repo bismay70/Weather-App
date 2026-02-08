@@ -1,4 +1,4 @@
-const apiKey = "adb12e4b79200cb95b6f85c3a75eb890";
+const apiKey = config.API_KEY;
 let searchHistory = JSON.parse(localStorage.getItem('weatherAppHistory')) || [];
 
 const cityInput = document.getElementById("cityInput");
