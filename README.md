@@ -16,7 +16,7 @@ This project demonstrates a clean UI for displaying:
 
 ## 📸 Screenshots
 
-<img src=./weather.png width="1000px"/>
+<img src=./mausam.png width="1000px"/>
 
 ---
 
